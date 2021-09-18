@@ -1,20 +1,18 @@
 <template>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <Button text="Button"></Button>
-  <Main></Main>
+  <Loading v-if="$store.state.isLoading"></Loading>
+  <Recording v-if="$store.state.isRecording"></Recording>
+  <router-view></router-view>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import Button from '@/components/Button';
-import Main from '@/components/Main'
+import Loading from '@/components/Loading'
+import Recording from '@/components/Recording'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    Button,
-    Main
+    Loading,
+    Recording
   }
 }
 </script>
@@ -40,6 +38,51 @@ export default {
   --color_accent:                     #F6C866;
   --color_border:                     rgba(255, 255, 255, 0.2);
   --color_danger:                     #EE5353;
+}
+
+.wrapper {
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: var(--color_white);
+  font-family: var(--font-family_basic);
+}
+
+.text_uppercase {
+  text-transform: uppercase;
+}
+
+.text_inaccent {
+  letter-spacing: 0.1em;
+  font-weight: var(--font-weight_light);
+  color: var(--color_inaccent);
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.text_accent {
+  color: var(--color_accent);
+  font-weight: var(--font-weight_regular);
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.eye {
+  position: absolute;
+  width: 90px;
+  height: 57px;
+  background: no-repeat center center url('./assets/eye.svg');
+  opacity: 0.2;
+}
+
+.moon {
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  background: no-repeat center center url('./assets/moon.svg');
+  opacity: 0.2;
 }
 
 </style>

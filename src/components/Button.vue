@@ -1,5 +1,5 @@
 <template>
-  <button class="button" @click="clickHandler()">
+  <button class="button" :class="{ button__green: type === 'green' }">
     {{ text }}
     <div class="gradient"></div>
   </button>
@@ -9,20 +9,14 @@ export default {
   name: 'Button',
   props: {
     text: String,
-    linkTo: String
+    type: {
+      type: String,
+      default: 'base'
+    }
   },
   data() {
     return {
 
-    }
-  },
-  methods: {
-    clickHandler() {
-      if (this.linkTo) {
-        console.log(this.$router);
-        console.log(this.$route);
-        this.$route.push('/'+this.linkTo);
-      }
     }
   }
 }
@@ -59,10 +53,17 @@ export default {
   position: absolute;
   top: 0;
   left: -3px;
-  background: linear-gradient(248.67deg, rgba(255, 255, 255, 0) 30.84%, rgba(255, 255, 255, 0.29) 46.06%, rgba(255, 255, 255, 0) 64.04%);
-  width: 87px;
+  background: linear-gradient(230deg, rgba(255, 255, 255, 0) 30.84%, rgba(255, 255, 255, 0.29) 46.06%, rgba(255, 255, 255, 0) 64.04%);
+  width: 55%;
   height: 100%;
-  animation: shine 2s ease-in-out 1s infinite normal forwards running;
+  animation: shine 2s ease-in-out 0s infinite normal forwards running;
   opacity: 0;
+}
+
+.button__green {
+  width: 238px;
+  height: 48px;
+  border-radius: 24px;
+  background: linear-gradient(90deg, rgba(76, 217, 100, 0.9) -6.2%, rgba(50, 185, 73, 0.9) 100%);
 }
 </style>
