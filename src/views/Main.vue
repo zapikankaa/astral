@@ -15,26 +15,8 @@
           Вас беспокоит вопрос о том, <br/>
           <span class="text_uppercase">когда Вы покинете этот Мир и при каких обстоятельствах?</span>
         </p>
-        <Dropdown
-          @dropdown-selected="dropdownSelect($event, 'day')"
-          class="dropdown"
-          :values="dropdownValues"
-          :placeholder="dropdownPlaceholder"
-          :isEmpty="dropdownEmpty"
-          @click="dropdownFocus('day')"
-          :focused="activeDropdown === 'day'">
-        </Dropdown>
-        <Dropdown
-          @dropdown-selected="dropdownSelect($event, 'month')"
-          class="dropdown"
-          :values="dropdown1Values"
-          :placeholder="dropdown1Placeholder"
-          :isEmpty="dropdown1Empty"
-          @click="dropdownFocus('month')"
-          :focused="activeDropdown === 'month'">
-        </Dropdown>
         <a href="#offer">
-          <Button class="main-section__button" text="Да" linkTo=""></Button>
+          <Button class="main-section__button" text="Да"></Button>
         </a>
         <a href="#prove">
           <Button class="main-section__button" text="Нет"></Button>
@@ -90,29 +72,18 @@
 </template>
 <script>
 import Button from '@/components/Button';
-import Dropdown from '@/components/Dropdown';
 
 export default {
   components: {
-    Button,
-    Dropdown
+    Button
   },
   data() {
     return {
-      isTermsHidden: true,
-      dropdownValues: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 ],
-      dropdownPlaceholder: 'День',
-      dropdown1Values: [ 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' ],
-      dropdown1Placeholder: 'Месяц',
-      dropdownEmpty: false,
-      dropdown1Empty: false,
-      activeDropdown: 'day',
-      selectedDay: '',
-      selectedMonth: ''
+      isTermsHidden: true
     }
   },
   mounted() {
-  this.$store.commit({
+    this.$store.commit({
       type: 'setLoading',
       isLoading: false
     });
@@ -129,22 +100,7 @@ export default {
         isLoading: true
       });
       this.$router.push('/question/2');
-    },
-    dropdownSelect(e, dropdown) {
-      if (dropdown === 'day') this.selectedDay = e.selectedValue
-      else if (dropdown === 'month') this.selectedMonth = e.selectedValue
-    },
-    clickHandler() {
-      if (this.selectedDay === '') this.dropdownEmpty = true 
-      if (this.selectedMonth === '') this.dropdown1Empty = true 
-    },
-    dropdownFocus(dropdown) {
-      this.activeDropdown = dropdown;
-      if (dropdown === 'day') this.dropdownEmpty = false
-      if (dropdown === 'month') this.dropdown1Empty = false
     }
-  },
-  created() {
   },
   watch: {
     isTermsHidden: function(hidden) {

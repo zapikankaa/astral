@@ -47,9 +47,6 @@ export default {
         type: 'setRecording',
         isRecording: true
       });
-      setTimeout(() => {
-        this.$router.push(`/prediction`)
-      }, 2000);
     }
   },
   computed: {

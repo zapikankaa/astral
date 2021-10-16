@@ -66,22 +66,6 @@ export default {
         }
       }
     }
-  },
-  computed: {
-    age() {
-      // вычислить возраст на основе даты рождения из state
-      return 21
-    }
-  },
-  watch: {
-    age() {
-
-    }
-  },
-  methods: {
-    clickHandler() {
-
-    }
   }
 }
 </script>
