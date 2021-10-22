@@ -41,13 +41,19 @@ export default {
 }
 
 .wrapper {
-  margin: 0 auto;
-  text-align: center;
+  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   flex-wrap: wrap;
-  color: var(--color_white);
+
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+
   font-family: var(--font-family_basic);
+  color: var(--color_white);
+  text-align: center;
 }
 
 .text_uppercase {
@@ -69,20 +75,58 @@ export default {
   line-height: 25px;
 }
 
+/* Eye */
 .eye {
   position: absolute;
+
   width: 90px;
-  height: 57px;
-  background: no-repeat center center url('./assets/eye.svg');
+  height: auto;
+}
+
+.eye__img {
+  position: absolute;
+  right: -33%;
+
+  width: 100%;
+
   opacity: 0.2;
 }
 
+/* Moon */
 .moon {
   position: absolute;
-  width: 51px;
-  height: 51px;
-  background: no-repeat center center url('./assets/moon.svg');
+
+  width: 51px; 
+  height: auto;
+}
+
+.moon__img {
+  position: absolute;
+  left: -30%;
+
+  width: 100%;
+
   opacity: 0.2;
+}
+
+@media screen and (min-width: 800px) {
+  .text_inaccent {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .text_accent {
+    font-size: 25px;
+    line-height: 35px;
+  }
+
+  .eye {
+    width: 319px;
+  }
+
+  .moon {
+    width: 160px;
+  }
 }
 
 </style>
