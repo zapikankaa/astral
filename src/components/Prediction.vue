@@ -1,7 +1,7 @@
 <template>
   <div class="prediction">
     <div class="wrapper">
-      <div class="prediction__cloud cloud">
+      <div class="cloud">
         <p class="cloud__text">Спасибо за ваши ответы!</p>
         <p class="cloud__text cloud__text_bold">Мы подготовили для вас персональную аудиозапись с вашим прогнозом.</p>
         <div class="cloud__corner"></div>
@@ -104,60 +104,68 @@ export default {
 <style scoped>
 .prediction {
   background: var(--color_black);
+
   min-height: 100vh;
 }
 
-.prediction__cloud {
-  margin-bottom: 28px ;
-}
-
+/* Cloud */
 .cloud {
-  margin-top: 24px;
+  position: relative;
+  box-sizing: border-box;
+  
   width: 259px;
   height: 84px;
-  background-color: var(--color_white);
-  border-radius: 5px;
-  position: relative;
+  margin-top: 24px;
+  margin-bottom: 28px;
   padding: 6px 13px;
-  box-sizing: border-box;
+
+  background-color: var(--color_white);
+
+  border-radius: 5px;
 }
 
 .cloud__corner {
   position: absolute;
   bottom: -10px;
   right: 18px;
+
   width: 0;
   height: 0;
+
   border-left: 7.5px solid transparent;
   border-right: 7.5px solid transparent;
   border-top: 13px solid var(--color_white);
 }
 
 .cloud__text {
-  color: var(--color_black);
   font-size: 14px;
   line-height: 18px;
+  color: var(--color_black);
 }
 
 .cloud__text_bold {
   font-weight: var(--font-weight_bold);
 }
 
+/* Prediction elements */
 .prediction__text {
+  width: 220px;
+
   font-size: 14px;
   line-height: 16px;
   font-weight: var(--font-weight_light);
-  width: 220px;
 }
 
 .prediction__block {
-  width: 259px;
-  border: 1px solid var(--color_white);
-  border-radius: 3px;
-  padding: 13px 15px 8px;
   box-sizing: border-box;
+
+  width: 259px;
   margin-top: 19px;
   margin-bottom: 19px;
+  padding: 13px 15px 8px;
+
+  border: 1px solid var(--color_white);
+  border-radius: 3px;  
 }
 
 .prediction__block .text_uppercase {
@@ -169,11 +177,20 @@ export default {
   margin-bottom: 23px;
 }
 
+/* .footer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+} */
+
+/* Terms */
 .terms {
+  width: 294px;
+
   font-size: 7px;
   line-height: 9px;
   letter-spacing: 3px;
-  width: 294px;
 }
 
 .terms.hidden {
@@ -186,4 +203,59 @@ export default {
   padding: 0 10px;
 }
 
+@media screen and (min-width: 800px) {
+  /* Cloud */
+  .cloud {
+    width: 480px;
+    height: 164px;
+    margin-top: 54px;
+    margin-bottom: 36px;
+    padding: 6px 8px;
+  }
+
+  .cloud__corner {
+    bottom: -19px;
+    
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 25px solid var(--color_white);
+  }
+
+  .cloud__text {
+    font-size: 25px;
+    line-height: 35px;
+  }
+
+  /* Prediction */
+  .prediction__text {
+    width: 469px;
+
+    font-size: 25px;
+    line-height: 35px;
+  }
+
+  .prediction__block {
+    width: 480px;
+    margin-top: 31px;
+    margin-bottom: 31px;
+    padding: 64px 42px 48px;
+  }
+
+  .prediction__button {
+    margin-top: 35px;
+    margin-bottom: 53px;
+  }
+
+  /* Terms */
+  .terms {
+    width: 488px;
+
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .terms.hidden {
+    height: 36px;
+  }
+}
 </style>

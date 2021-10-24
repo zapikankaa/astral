@@ -243,7 +243,7 @@ export default {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  background: no-repeat url(/img/image7.e81bb63a.jpg) center center / cover;
+  background: no-repeat url('../assets/image7.jpg') center center / cover;
 }
 
 .prove-section__cover {

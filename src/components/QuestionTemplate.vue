@@ -6,14 +6,18 @@
           <p class="header__text">{{ headerText }}</p>
           <div class="cloud__corner"></div>
         </div>
+        <div class="eye question-section__eye">
+          <img class="eye__img" src="../assets/eye.svg"/>
+        </div>
       </div>
-      <div class="eye"></div>
     </header>
     <header v-else class="header">
       <div class="wrapper">
         <p class="header__text">{{ headerText }}</p>
+        <div class="eye question-section__eye">
+          <img class="eye__img" src="../assets/eye.svg"/>
+        </div>
       </div>
-      <div class="eye"></div>
     </header>
     <main class="main" :class="{ padding_10: wideHeader }">
       <div class="wrapper">
@@ -21,10 +25,12 @@
         <slot></slot>
       </div>
     </main>
-    <div class="moon"></div>
     <footer class="footer">
       <div class="wrapper">
         <p class="question__title text_inaccent">Вопрос {{ questionNum }}-5</p>
+        <div class="moon question-section__moon">
+          <img class="moon__img" src="../assets/moon.svg" alt="">
+        </div>
       </div>
     </footer>
   </div>
@@ -72,16 +78,27 @@ export default {
 <style scoped>
 .question {
   background: var(--color_black);
+
   height: 100vh;
   overflow: hidden;
 }
 
+.question .wrapper {
+  max-width: 556px;
+  height: 100%;
+}
+
 .header {
-  height: 22%;
   position: relative;
-  border-bottom: 1px solid var(--color_border);
   display: flex;
   align-items: center;
+
+  width: 100%;
+  max-width: 1440px;
+  height: 22%;
+  margin: 0 auto;
+  
+  border-bottom: 1px solid var(--color_border);
 }
 
 .header_clouded {
@@ -95,15 +112,18 @@ export default {
 }
 
 .cloud {
-  margin-top: 24px;
-  width: 259px;
-  height: 84px;
-  background-color: var(--color_white);
-  border-radius: 5px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+
+  background-color: var(--color_white);
+
+  width: 259px;
+  height: 84px;
+
+  border-radius: 5px;
+  
   animation: appear 5s ease-in-out 0s 1 normal forwards running;
   opacity: 0;
 }
@@ -112,8 +132,10 @@ export default {
   position: absolute;
   bottom: -10px;
   right: 18px;
+
   width: 0;
   height: 0;
+
   border-left: 7.5px solid transparent;
   border-right: 7.5px solid transparent;
   border-top: 13px solid var(--color_white);
@@ -121,27 +143,30 @@ export default {
 
 .header__text {
   width: 235px;
+
   font-family: var(--font-family_additional);
   font-size: 14px;
   line-height: 20px;
   font-weight: var(--font-weight_regular);
   color: var(--color_white);
+
   opacity: 0.6;
 }
 
 .cloud .header__text {
   color: var(--color_black);
+
   opacity: 1;
 }
 
 .question .eye {
-  right: -27px;
+  right: 0;
   bottom: 0;
 }
 
 .question .moon {
-  left: -9px;
-  bottom: 6%;
+  left: 0;
+  bottom: 6vh;
 }
 
 .main {
@@ -159,10 +184,6 @@ export default {
   margin-bottom: 40px;
 }
 
-.content {
-
-}
-
 .content__item {
   margin-bottom: 20px;
 }
@@ -170,8 +191,50 @@ export default {
 .footer {
   position: absolute;
   bottom: 0;
+
   height: 62px;
   width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .header__text {
+    width: 412px;
+
+    font-size: 25px;
+    line-height: 35px;
+  }
+
+  .question__text {
+    width: 503px;
+  }
+
+  .eye {
+    width: 157px;
+  }
+
+  .moon {
+    width: 89px;
+  }
+
+  .cloud {
+    width: 480px;
+    height: 164px;
+  }
+
+  .cloud__corner {
+    bottom: -19px;
+    
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 25px solid var(--color_white);
+  }
+
+}
+
+@media screen and (min-width: 800px) and (min-height: 800px) {
+  .main {
+    padding-top: 74px;
+  }
 }
 
 </style>

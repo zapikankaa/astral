@@ -45,6 +45,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 
   width: 100%;
@@ -81,6 +82,7 @@ export default {
 
   width: 90px;
   height: auto;
+  aspect-ratio: 90/58;
 }
 
 .eye__img {
@@ -98,6 +100,7 @@ export default {
 
   width: 51px; 
   height: auto;
+  aspect-ratio: 1/1;
 }
 
 .moon__img {

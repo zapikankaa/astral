@@ -174,4 +174,10 @@ export default {
 .item {
   margin-bottom: 20px;
 }
+
+@media screen and (min-width: 800px) and (min-height: 800px) {
+  .item {
+    margin-bottom: 35px;
+  }
+}
 </style>

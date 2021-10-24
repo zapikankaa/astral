@@ -56,4 +56,10 @@ export default {
 .button {
   margin-bottom: 20px;
 }
+
+@media screen and (min-width: 800px) and (min-height: 800px) {
+  .button {
+    margin-bottom: 35px;
+  }
+}
 </style>
