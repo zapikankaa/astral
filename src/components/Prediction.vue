@@ -103,6 +103,10 @@ export default {
 </script>
 <style scoped>
 .prediction {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   background: var(--color_black);
 
   min-height: 100vh;
@@ -176,13 +180,6 @@ export default {
   margin-top: 21px;
   margin-bottom: 23px;
 }
-
-/* .footer {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
-} */
 
 /* Terms */
 .terms {
