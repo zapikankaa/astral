@@ -5,7 +5,7 @@
         <h1 class="text_inaccent">Лучшие астрологи и экстрасенсы Румынии</h1>
       </div>
     </header>
-    <section class="intro-section">
+    <section class="intro-section visible" id="intro">
       <div class="wrapper">
         <p class="text_inaccent intro-section__accuracy">Точность прогноза: 97%</p>
         <div class="intro-section__picture">
@@ -47,7 +47,7 @@
         </div>
       </div>
     </section>
-    <section class="question-section">
+    <section class="question-section" id="question">
       <div class="wrapper">
         <p class="question-section__question text_accent text_uppercase">
           Боитесь ли вы умереть?
@@ -85,10 +85,13 @@ export default {
   },
   data() {
     return {
-      isTermsHidden: true
+      isTermsHidden: true,
+      isScrolling: false
     }
   },
   mounted() {
+    window.addEventListener('scroll', this.scrollHandler);
+
     this.$store.commit({
       type: 'setLoading',
       isLoading: false
@@ -106,6 +109,51 @@ export default {
         isLoading: true
       });
       this.$router.push('/question/2');
+    },
+    scrollHandler() {
+      if (!this.isScrolling) {
+        window.requestAnimationFrame(() => {
+          this.useAnimation();
+          this.isScrolling = false;
+        });
+      }
+      this.isScrolling = true;
+    },
+    useAnimation() {
+      const intro = document.querySelector('#intro'),
+            offer = document.querySelector('#offer'),
+            prove = document.querySelector('#prove'),
+            question = document.querySelector('#question');
+
+      if (this.isPartiallyVisible(intro)) {
+        intro.classList.add('visible');
+      } else {
+        intro.classList.remove('visible');
+      }
+      if (this.isPartiallyVisible(offer)) {
+        offer.classList.add('visible');
+      } else {
+        offer.classList.remove('visible');
+      }
+      if (this.isPartiallyVisible(prove)) {
+        prove.classList.add('visible');
+      } else {
+        prove.classList.remove('visible');
+      }
+      if (this.isPartiallyVisible(question)) {
+        question.classList.add('visible');
+      } else {
+        question.classList.remove('visible');
+      }
+    },
+    isPartiallyVisible(element) {
+      const boundingRect = element.getBoundingClientRect(),
+            top = boundingRect.top,
+            bottom = boundingRect.bottom,
+            height = boundingRect.height;
+            console.log('rect', boundingRect);
+            console.log(window.innerHeight);
+      return (top + height >= 0) && (height + window.innerHeight >= bottom);
     }
   },
   watch: {
@@ -121,6 +169,22 @@ export default {
 }
 </script>
 <style scoped>
+
+#intro,
+#offer,
+#prove,
+#question {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+#intro.visible,
+#offer.visible,
+#prove.visible,
+#question.visible {
+  opacity: 1;
+}
+
 .main {
   width: 100%;
   overflow: hidden;

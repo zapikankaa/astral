@@ -105,6 +105,8 @@ select {
   border-radius: 20px;
   border: 1px solid var(--color_border);
   background: linear-gradient(90deg, rgba(228, 228, 228, 1) -6.2%, rgba(203, 203, 203, 1) 100%);
+
+  transition: .2s height ease;
 }
 
 .options::-webkit-scrollbar {
